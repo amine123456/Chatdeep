@@ -1,16 +1,19 @@
-#Hello Chatdeep
-from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
+# Import the necessary libraries
+from transformers import pipeline
 
-# Create a chatbot instance
-chatbot = ChatBot('MyChatBot')
+# Load a pre-trained chatbot model (DialoGPT)
+chatbot = pipeline("conversational", model="microsoft/DialoGPT-medium")
 
-# Train the chatbot on English corpus
-trainer = ChatterBotCorpusTrainer(chatbot)
-trainer.train("chatterbot.corpus.english")
+# Function to handle the chat
+def chat():
+    print("Chatbot is ready! Type 'exit' to end the conversation.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == "exit":
+            break
+        response = chatbot(user_input)[0]['generated_text']
+        print(f"Bot: {response}")
 
-# Start chatting
-while True:
-    user_input = input("You: ")
-    response = chatbot.get_response(user_input)
-    print(f"Bot: {response}")
+# Run the chatbot
+if __name__ == "__main__":
+    chat()
