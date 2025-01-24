@@ -2,7 +2,7 @@
 from transformers import pipeline
 
 # Load a pre-trained chatbot model (DialoGPT)
-chatbot = pipeline("conversational", model="microsoft/DialoGPT-medium")
+chatbot = pipeline("text-generation", model="microsoft/DialoGPT-medium")
 
 # Function to handle the chat
 def chat():
@@ -11,7 +11,8 @@ def chat():
         user_input = input("You: ")
         if user_input.lower() == "exit":
             break
-        response = chatbot(user_input)[0]['generated_text']
+        # Generate a response using the chatbot
+        response = chatbot(user_input, max_length=50, num_return_sequences=1)[0]['generated_text']
         print(f"Bot: {response}")
 
 # Run the chatbot
