@@ -1,16 +1,16 @@
 from transformers import pipeline
 
-# Load a pre-trained chatbot model (DialoGPT-small)
+# Load the fine-tuned model
 chatbot = pipeline(
     "text-generation",
-    model="facebook/blenderbot_small-90M",
-    truncation=True,  # Explicitly enable truncation
-    pad_token_id=50256,  # Set pad_token_id to eos_token_id
-    max_length=50,  # Limit the response length
-    do_sample=True,  # Enable sampling for temperature and top_p
-    temperature=0.7,  # Adjust randomness (lower = more deterministic)
-    top_k=50,  # Use top-k sampling
-    top_p=0.95  # Use nucleus sampling
+    model="./fine-tuned-blenderbot",  # Use the fine-tuned model
+    truncation=True,
+    pad_token_id=50256,
+    max_length=50,
+    do_sample=True,
+    temperature=0.7,
+    top_k=50,
+    top_p=0.95
 )
 
 # Function to handle the chat
