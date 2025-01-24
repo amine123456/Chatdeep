@@ -1,10 +1,10 @@
-from transformers import BlenderbotForConditionalGeneration, BlenderbotTokenizer, Trainer, TrainingArguments
+from transformers import BlenderbotForConditionalGeneration, BlenderbotSmallTokenizer, Trainer, TrainingArguments
 from datasets import Dataset
 
-# Load the BlenderBot model and tokenizer
+# Load the BlenderBot-small model and tokenizer
 model_name = "facebook/blenderbot_small-90M"
 model = BlenderbotForConditionalGeneration.from_pretrained(model_name)
-tokenizer = BlenderbotTokenizer.from_pretrained(model_name)
+tokenizer = BlenderbotSmallTokenizer.from_pretrained(model_name)
 
 # Load your dataset
 import json

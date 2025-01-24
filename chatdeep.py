@@ -1,11 +1,16 @@
-from transformers import pipeline
+from transformers import pipeline, BlenderbotSmallTokenizer
 
-# Load the fine-tuned model
+# Load the fine-tuned model and tokenizer
+model_path = "./fine-tuned-blenderbot"
+tokenizer = BlenderbotSmallTokenizer.from_pretrained(model_path)
+
+# Create a chatbot pipeline
 chatbot = pipeline(
     "text-generation",
-    model="./fine-tuned-blenderbot",  # Use the fine-tuned model
+    model=model_path,
+    tokenizer=tokenizer,
     truncation=True,
-    pad_token_id=50256,
+    pad_token_id=tokenizer.eos_token_id,  # Use the correct pad_token_id
     max_length=50,
     do_sample=True,
     temperature=0.7,
