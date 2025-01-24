@@ -25,7 +25,7 @@ tokenized_dataset = dataset.map(tokenize_function, batched=True)
 # Fine-tune the model
 training_args = TrainingArguments(
     output_dir="./fine-tuned-blenderbot",
-    evaluation_strategy="epoch",
+    evaluation_strategy="no",  # Disable evaluation
     learning_rate=2e-5,
     per_device_train_batch_size=8,
     num_train_epochs=3,
