@@ -3,7 +3,7 @@ from transformers import pipeline
 # Load a pre-trained chatbot model (DialoGPT-small)
 chatbot = pipeline(
     "text-generation",
-    model="distilgpt2",
+    model="facebook/blenderbot_small-90M",
     truncation=True,  # Explicitly enable truncation
     pad_token_id=50256,  # Set pad_token_id to eos_token_id
     max_length=50,  # Limit the response length
