@@ -2,7 +2,7 @@
 from transformers import pipeline
 
 # Load a pre-trained chatbot model (DialoGPT)
-chatbot = pipeline("text-generation", model="microsoft/DialoGPT-medium")
+chatbot = pipeline("text-generation", model="microsoft/DialoGPT-small")
 
 # Function to handle the chat
 def chat():
